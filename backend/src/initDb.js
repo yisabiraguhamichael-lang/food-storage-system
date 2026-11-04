@@ -1,0 +1,1 @@
+import fs from 'node:fs/promises';import{pool}from'./db.js';try{await pool.query(await fs.readFile(new URL('../database/schema.sql',import.meta.url),'utf8'));console.log('Database schema initialized.')}catch(e){console.error('Database init failed:',e.message);process.exitCode=1}finally{await pool.end()}
